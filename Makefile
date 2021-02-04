@@ -8,3 +8,8 @@ main: main.c shaders external/
 
 shaders: shaders/*
 	./compile_shaders.pl
+
+.PHONY: clean
+
+clean:
+	rm main

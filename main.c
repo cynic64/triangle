@@ -67,16 +67,8 @@ int main() {
         shaders[1].pName = "main";
 
         // Render pass
-        struct RpassAttachment attach = RPASS_DEFAULT_ATTACH_COLOR;
-        attach.desc.format = swapchain.format;
-
-	struct RpassSubpass subpass = {0};
-	subpass.bind_point = VK_PIPELINE_BIND_POINT_GRAPHICS;
-	subpass.color_attach_ct = 1;
-	subpass.color_attachs = &attach;
-
 	VkRenderPass rpass;
-	rpass_create(base.device, 1, &subpass, 1, &RPASS_DEFAULT_DEPENDENCY_COLOR_TO_EXTERNAL, &rpass);
+	rpass_basic(base.device, swapchain.format, &rpass);
 
         // Pipeline layout
         VkPipelineLayoutCreateInfo pipeline_layout_info = {0};
